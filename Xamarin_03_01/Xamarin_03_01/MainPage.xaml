@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Xamarin_03_01.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Xamarin_03_01">
+
+    <StackLayout
+        Padding="20,-10">
+        <Label
+            Margin="0"
+            FontSize="Small"
+            Text="{Binding Source={x:Reference Name=studentList}}" />
+        <ListView
+            x:Name="studentList"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Students}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label
+                                    FontSize="Large"
+                                    Text="{Binding Surname}" />
+                                <Label
+                                    Text="{Binding PhysicScore}" />
+                                <Label
+                                    Text="{Binding MathScore}" />
+                                <Label
+                                    Text="{Binding InfScore}" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout
+            HorizontalOptions="Center">
+
+            <Entry
+                x:Name="surnameEntry"
+                Placeholder="Прізвище" />
+            <Label
+                HorizontalOptions="Center"
+                Text="Оцінки" />
+            <StackLayout
+                Orientation="Horizontal">
+                <Entry
+                    x:Name="physicPointEntry"
+                    Keyboard="Numeric"
+                    Placeholder="Фізика" />
+                <Entry
+                    x:Name="mathPointEntry"
+                    Keyboard="Numeric"
+                    Placeholder="Математика" />
+                <Entry
+                    x:Name="infPointEntry"
+                    Keyboard="Numeric"
+                    Placeholder="Інформатика" />
+            </StackLayout>
+            <StackLayout
+                Padding="0,0,0,10"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Button
+                    Command="{Binding AddCommand}"
+                    Text="Додати" />
+                <Button
+                    Command="{Binding RemoveCommand}"
+                    Text="Видалити" />
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
